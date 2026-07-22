@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How I Built a Cybersecurity Portfolio Through Open Source Contributions</title>
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --text: #e0e0e0;
+            --accent: #00D2FF;
+            --secondary: #ff0040;
+            --code-bg: #1a1a2e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #888;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: var(--accent);
+            margin: 40px 0 20px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            color: var(--secondary);
+            margin: 30px 0 15px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+        }
+        
+        strong {
+            color: var(--accent);
+        }
+        
+        code {
+            background: var(--code-bg);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+        }
+        
+        pre {
+            background: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid var(--accent);
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        ul, ol {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #333;
+        }
+        
+        th {
+            background: var(--accent);
+            color: var(--bg);
+        }
+        
+        tr:nth-child(even) {
+            background: #1a1a1a;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric {
+            background: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--accent);
+        }
+        
+        .metric-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--accent);
+        }
+        
+        .metric-label {
+            color: #888;
+            font-size: 0.9em;
+        }
+        
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid #333;
+            margin: 40px 0;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>How I Built a Cybersecurity Portfolio Through Open Source Contributions</h1>
+        <p class="subtitle">A practical guide to building visibility and credibility in the security community through meaningful open source work.</p>
+        
+        <hr>
+        
+        <h2>The Problem</h2>
+        <p>Everyone says "contribute to open source" but nobody explains <strong>how</strong> to do it effectively when you're starting out. After spending weeks contributing to major cybersecurity projects, I learned that it's not just about writing code — it's about <strong>being helpful</strong>.</p>
+        
+        <h2>What I Did</h2>
+        <div class="metrics">
+            <div class="metric">
+                <div class="metric-number">6</div>
+                <div class="metric-label">PRs Opened</div>
+            </div>
+            <div class="metric">
+                <div class="metric-number">26+</div>
+                <div class="metric-label">Issue Comments</div>
+            </div>
+            <div class="metric">
+                <div class="metric-number">3</div>
+                <div class="metric-label">Tools Created</div>
+            </div>
+            <div class="metric">
+                <div class="metric-number">10+</div>
+                <div class="metric-label">Repositories</div>
+            </div>
+        </div>
+        
+        <h2>The Strategy</h2>
+        
+        <h3>1. Start with Documentation</h3>
+        <p>Documentation PRs are the easiest entry point. I found a broken link in IntelOwl's OpenCTI documentation:</p>
+        <pre><code># Before
+url = "https://docs.opencti.io/latest/deployment/..."
+
+# After  
+url = "https://docs.opencti.io/latest/deployment/authentication"</code></pre>
+        <p><strong>Why it works</strong>: Maintainers love documentation fixes because they improve user experience without risk.</p>
+        
+        <h3>2. Fix Real Bugs</h3>
+        <p>I found an issue in Prowler where stopped EC2 instances weren't being checked after a specific number of days. The check existed but wasn't enabled by default.</p>
+        <p><strong>What I did</strong>:</p>
+        <ul>
+            <li>Created a new check with proper severity</li>
+            <li>Added comprehensive docstrings</li>
+            <li>Fixed timezone handling (<code>datetime.now(timezone.utc)</code> instead of naive datetime)</li>
+            <li>Addressed CodeRabbit AI feedback professionally</li>
+        </ul>
+        
+        <h3>3. Extend Existing Rules</h3>
+        <p>For Checkov, I extended <code>CKV_GIT_3</code> to also check for GitHub repository vulnerability alerts. This is valuable because:</p>
+        <ul>
+            <li>It improves security coverage</li>
+            <li>It's backward compatible</li>
+            <li>It follows existing patterns</li>
+        </ul>
+        
+        <h3>4. Comment Helpfully on Issues</h3>
+        <p>This is the most underrated strategy. I didn't just say "+1" or "I have this too." Instead:</p>
+        <pre><code>## Root Cause Analysis
+
+The issue occurs because Elasticsearch uses base64url IDs 
+(44 characters, [A-Za-z0-9_-]) while Kubernetes labels 
+require [a-z0-9] with optional [-.] separators.
+
+## Suggested Fix
+
+import base64
+
+def sanitize_for_k8s(es_id: str) -> str:
+    decoded = base64.urlsafe_b64decode(es_id + "==")
+    return ''.join(c if c.isalnum() or c in '-.' else '-' for c in decoded)[:63]
+
+This approach:
+1. Decodes the Elasticsearch ID
+2. Sanitizes invalid characters
+3. Respects the 63-character label limit</code></pre>
+        <p><strong>Why it works</strong>: You're not just identifying problems — you're solving them.</p>
+        
+        <h3>5. Build Tools That Solve Real Problems</h3>
+        <p>I created three tools that fill gaps in the ecosystem:</p>
+        <table>
+            <tr>
+                <th>Tool</th>
+                <th>Purpose</th>
+                <th>Why It's Useful</th>
+            </tr>
+            <tr>
+                <td><a href="https://github.com/janderik/ioc-extractor">ioc-extractor</a></td>
+                <td>Extract IOCs from logs</td>
+                <td>Supports 17 IOC types including JA3, AWS keys, GitHub tokens</td>
+            </tr>
+            <tr>
+                <td><a href="https://github.com/janderik/sigma-tester">sigma-tester</a></td>
+                <td>Validate Sigma rules</td>
+                <td>Catches issues before deployment</td>
+            </tr>
+            <tr>
+                <td><a href="https://github.com/janderik/yara-tester">yara-tester</a></td>
+                <td>Validate YARA rules</td>
+                <td>Performance warnings and quality checks</td>
+            </tr>
+        </table>
+        <p><strong>Key insight</strong>: These tools are pure Python with no external dependencies (except optional yara-python). This makes them easy to adopt.</p>
+        
+        <h2>The Impact</h2>
+        
+        <h3>What I Learned</h3>
+        <ol>
+            <li><strong>Quality > Quantity</strong>: One helpful comment beats 10 "+1" comments</li>
+            <li><strong>Be Specific</strong>: Reference exact files, line numbers, and functions</li>
+            <li><strong>Follow Up</strong>: Respond to feedback professionally</li>
+            <li><strong>Think Like a Maintainer</strong>: What would help them most?</li>
+        </ol>
+        
+        <h2>The Framework</h2>
+        <p>Here's my repeatable process:</p>
+        <pre><code>1. FIND: Look for issues with labels like "question", "bug", "help wanted"
+2. ANALYZE: Read the issue thoroughly, understand the root cause
+3. SOLVE: Provide a specific solution with code examples
+4. DOCUMENT: Create tools or write guides that help others
+5. FOLLOW UP: Respond to feedback and iterate</code></pre>
+        
+        <h2>Common Mistakes to Avoid</h2>
+        
+        <h3>Don't Do This</h3>
+        <pre><code>"I also have this issue. Please fix it."</code></pre>
+        
+        <h3>Do This Instead</h3>
+        <pre><code>I investigated this and found the root cause in `src/service.py:42`. 
+The null check is missing before accessing `.attributes`. 
+Here's a suggested fix:
+[code example]</code></pre>
+        
+        <h2>Conclusion</h2>
+        <p>Open source contribution isn't just about code. It's about <strong>being a helpful member of the community</strong>. By combining documentation fixes, bug fixes, rule extensions, helpful comments, and tool creation, you build a portfolio that demonstrates real-world skills.</p>
+        <p>The best part? This approach works for anyone, regardless of experience level. You don't need to be a senior engineer to fix a broken link or answer a question helpfully.</p>
+        <p>Start small, be consistent, and always focus on being helpful.</p>
+        
+        <hr>
+        
+        <h2>Resources</h2>
+        <ul>
+            <li><a href="https://github.com/janderik">My GitHub Profile</a></li>
+            <li><a href="https://github.com/janderik/ioc-extractor">IOC Extractor</a></li>
+            <li><a href="https://github.com/janderik/sigma-tester">Sigma Tester</a></li>
+            <li><a href="https://github.com/janderik/yara-tester">YARA Tester</a></li>
+        </ul>
+        
+        <div class="footer">
+            <p>Security professional focused on DevSecOps, threat detection, and open source contribution.</p>
+            <p>© 2026 Janderik | <a href="https://github.com/janderik">GitHub</a></p>
+        </div>
+    </div>
+</body>
+</html>
