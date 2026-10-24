@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,6&height=180&section=header&text=Jand%C3%A9rik%20Marins&fontSize=56&fontColor=fff&fontAlignY=35&desc=Cybersecurity%20%E2%80%A2%20DFIR%20%E2%80%A2%20Threat%20Intelligence%20%E2%80%A2%20Data%20%26%20AI&descAlignY=58&descSize=16" width="100%"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,6&height=200&section=header&text=JANDERIK&fontSize=80&fontColor=fff&animation=twinkling&fontAlignY=35" width="100%" alt="Jandérik Marins"/>
 </div>
 
 <p align="center">
